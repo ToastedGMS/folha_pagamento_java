@@ -16,10 +16,11 @@ public class Colaborador {
 class ColaboradorComissionado extends Colaborador {
     private double valorVendas;
     private double comissaoPercentual;
+    double valorComissao;
 
     @Override // utiliza override para evitar o uso de condicionais longas e repetitivas
     double calcularSalario() {
-        double valorComissao = valorVendas * comissaoPercentual / 100;
+        valorComissao = valorVendas * comissaoPercentual / 100;
         return salarioBase + valorComissao;
     }
 
@@ -29,15 +30,20 @@ class ColaboradorComissionado extends Colaborador {
         this.valorVendas = vendas;
         this.comissaoPercentual = comissao;
     }
+
+    public double getValorComissao() {
+        return valorComissao;
+    }
 }
 
 class ColaboradorProducao extends Colaborador {
     private double quantidadePecas;
     private double valorPeca;
+    double bonusProdutividade;
 
     @Override
     double calcularSalario() {
-        double bonusProdutividade = valorPeca * quantidadePecas;
+        bonusProdutividade = valorPeca * quantidadePecas;
         return salarioBase + bonusProdutividade;
     }
 
@@ -45,5 +51,9 @@ class ColaboradorProducao extends Colaborador {
         super(nome, registro);
         this.quantidadePecas = pecas;
         this.valorPeca = valor;
+    }
+
+    public double getBonusProdutividade() {
+        return bonusProdutividade;
     }
 }
