@@ -57,6 +57,31 @@ public class App {
                     sc.nextLine();
                     break;
                 case 3:
+                    sc.nextLine();
+                    System.out.println("Cadastro de colaborador da produção");
+                    System.out.println("Informe o nome do colaborador:");
+                    String nomeColaboradorProducao = sc.nextLine();
+
+                    System.out.println("Informe o número de registro do colaborador:");
+                    String registroColaboradorProducao = sc.nextLine();
+
+                    System.out.println("Informe a quantidade de peças produzidas pelo colaborador:");
+                    double pecasColaboradorProducao = sc.nextDouble();
+                    sc.nextLine();
+
+                    System.out.println("Informe o valor por peça:");
+                    double valorPeca = sc.nextDouble();
+                    sc.nextLine();
+
+                    Colaborador newColaboradorProducao = new ColaboradorProducao(nomeColaboradorProducao,
+                            registroColaboradorProducao, pecasColaboradorProducao,
+                            valorPeca);
+
+                    colaboradores.add(newColaboradorProducao);
+                    System.out.println("Colaborador " + newColaboradorProducao.nomeCompleto + " adicionado.");
+
+                    System.out.println("\n[Pressione ENTER para voltar ao menu]");
+                    sc.nextLine();
                     break;
                 case 4:
                     break;
