@@ -30,6 +30,31 @@ public class App {
                     sc.nextLine(); // opção de melhoria para UX
                     break;
                 case 2:
+                    sc.nextLine();
+                    System.out.println("Cadastro de colaborador comissionado");
+                    System.out.println("Informe o nome do colaborador:");
+                    String nomeColaboradorComissionado = sc.nextLine();
+
+                    System.out.println("Informe o número de registro do colaborador:");
+                    String registroColaboradorComissionado = sc.nextLine();
+
+                    System.out.println("Informe o valor das vendas do colaborador:");
+                    double vendasColaboradorComissionado = sc.nextDouble();
+                    sc.nextLine();
+
+                    System.out.println("Informe a comissão percentual do colaborador:");
+                    double comissaoColaboradorComissionado = sc.nextDouble();
+                    sc.nextLine();
+
+                    Colaborador newColaboradorComissionado = new ColaboradorComissionado(nomeColaboradorComissionado,
+                            registroColaboradorComissionado, vendasColaboradorComissionado,
+                            comissaoColaboradorComissionado);
+
+                    colaboradores.add(newColaboradorComissionado);
+                    System.out.println("Colaborador " + newColaboradorComissionado.nomeCompleto + " adicionado.");
+
+                    System.out.println("\n[Pressione ENTER para voltar ao menu]");
+                    sc.nextLine();
                     break;
                 case 3:
                     break;
