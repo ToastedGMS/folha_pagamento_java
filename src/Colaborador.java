@@ -1,7 +1,7 @@
 public class Colaborador {
     private String nomeCompleto;
     private String numeroRegistro;
-    final double salarioBase = 2000; // utiliza final e private para evitar modificação acidental dos valores
+    static final double salarioBase = 2000; // utiliza final e private para evitar modificação acidental dos valores
 
     double calcularSalario() {
         return salarioBase;
