@@ -41,10 +41,20 @@ public class App {
 
                     System.out.println("Informe o valor das vendas do colaborador:");
                     double vendasColaboradorComissionado = sc.nextDouble();
+
+                    while (vendasColaboradorComissionado < 0) { // impede valores negativos
+                        System.out.println("Valor inválido! As vendas não podem ser negativas. Tente novamente:");
+                        vendasColaboradorComissionado = sc.nextDouble();
+                    }
                     sc.nextLine();
 
                     System.out.println("Informe a comissão percentual do colaborador:");
                     double comissaoColaboradorComissionado = sc.nextDouble();
+
+                    while (comissaoColaboradorComissionado < 0) {
+                        System.out.println("Valor inválido! A comissão não pode ser negativa. Tente novamente:");
+                        comissaoColaboradorComissionado = sc.nextDouble();
+                    }
                     sc.nextLine();
 
                     Colaborador newColaboradorComissionado = new ColaboradorComissionado(nomeColaboradorComissionado,
@@ -68,10 +78,20 @@ public class App {
 
                     System.out.println("Informe a quantidade de peças produzidas pelo colaborador:");
                     double pecasColaboradorProducao = sc.nextDouble();
+
+                    while (pecasColaboradorProducao < 0) {
+                        System.out.println(
+                                "Valor inválido! A quantidade de peças produzidas não pode ser negativa. Tente novamente:");
+                        pecasColaboradorProducao = sc.nextDouble();
+                    }
                     sc.nextLine();
 
                     System.out.println("Informe o valor por peça:");
                     double valorPeca = sc.nextDouble();
+                    while (valorPeca < 0) {
+                        System.out.println("Valor inválido! O valor por peça não pode ser negativo. Tente novamente:");
+                        valorPeca = sc.nextDouble();
+                    }
                     sc.nextLine();
 
                     Colaborador newColaboradorProducao = new ColaboradorProducao(nomeColaboradorProducao,
