@@ -9,8 +9,9 @@ public class App {
                    // cada execução
 
         do {
+            System.out.println("\n-------------------------------------------");
             System.out.printf(
-                    "Digite sua escolha:\n1-Cadastrar Funcionario Padrao\n2-Cadastrar Funcionario Comissionado\n3-Cadastrar Funcionario Producao\n4-Gerar Folha de Pagamento\n0-Sair do Programa");
+                    "1-Cadastrar Funcionario Padrao\n2-Cadastrar Funcionario Comissionado\n3-Cadastrar Funcionario Producao\n4-Gerar Folha de Pagamento\n0-Sair do Programa\nEscolha: ");
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
@@ -84,11 +85,20 @@ public class App {
                     sc.nextLine();
                     break;
                 case 4:
-                    System.out.println("Gerar folha de pagamento");
+                    System.out.println("\n======= FOLHA DE PAGAMENTO =======");
+                    System.out.println("Total de funcionários: " + colaboradores.size());
+                    System.out.println("----------------------------------");
+
                     for (Colaborador item : colaboradores) {
                         item.imprimirDetalhes();
-                        System.out.println("Salário Total: " + item.calcularSalario());
+                        // Usando printf para formatar o dinheiro com 2 casas decimais
+                        System.out.printf("Salário Total: R$ %.2f\n", item.calcularSalario());
+                        System.out.println("----------------------------------");
                     }
+
+                    System.out.println("\n[Pressione ENTER para voltar ao menu]");
+                    sc.nextLine();
+                    sc.nextLine();
                     break;
                 case 0:
                     System.out.println("Até mais!");
