@@ -1,10 +1,25 @@
 public class Colaborador {
-    String nomeCompleto;
-    String numeroRegistro;
-    final double salarioBase = 2000; // utiliza final para evitar modificação do valor
+    private String nomeCompleto;
+    private String numeroRegistro;
+    final double salarioBase = 2000; // utiliza final e private para evitar modificação acidental dos valores
 
     double calcularSalario() {
         return salarioBase;
+    }
+
+    public String getNomeCompleto() { // força a aplicação a usar métodos sempre que precisar de informação sobre a
+                                      // classe
+        return nomeCompleto;
+    }
+
+    public String getNumeroRegistro() {
+        return numeroRegistro;
+    }
+
+    public void imprimirDetalhes() {
+        System.out.println("Nome: " + nomeCompleto);
+        System.out.println("Matrícula: " + numeroRegistro);
+        System.out.println("Salário Base: " + salarioBase);
     }
 
     public Colaborador(String nome, String registro) { // construtor
@@ -16,12 +31,24 @@ public class Colaborador {
 class ColaboradorComissionado extends Colaborador {
     private double valorVendas;
     private double comissaoPercentual;
-    double valorComissao;
+
+    public double getValorComissao() {
+        double valorComissao = valorVendas * comissaoPercentual / 100;
+        return valorComissao;
+    }
 
     @Override // utiliza override para evitar o uso de condicionais longas e repetitivas
     double calcularSalario() {
-        valorComissao = valorVendas * comissaoPercentual / 100;
+        double valorComissao = valorVendas * comissaoPercentual / 100;
         return salarioBase + valorComissao;
+    }
+
+    @Override
+    public void imprimirDetalhes() {
+        System.out.println("Nome: " + this.getNomeCompleto());
+        System.out.println("Matrícula: " + this.getNumeroRegistro());
+        System.out.println("Salário Base: " + this.calcularSalario());
+        System.out.println("Valor Comissão: " + this.getValorComissao());
     }
 
     public ColaboradorComissionado(String nome, String registro, double vendas, double comissao) {
@@ -31,20 +58,29 @@ class ColaboradorComissionado extends Colaborador {
         this.comissaoPercentual = comissao;
     }
 
-    public double getValorComissao() {
-        return valorComissao;
-    }
 }
 
 class ColaboradorProducao extends Colaborador {
     private double quantidadePecas;
     private double valorPeca;
-    double bonusProdutividade;
+
+    public double getBonusProdutividade() {
+        double bonusProdutividade = valorPeca * quantidadePecas;
+        return bonusProdutividade;
+    }
 
     @Override
     double calcularSalario() {
-        bonusProdutividade = valorPeca * quantidadePecas;
+        double bonusProdutividade = valorPeca * quantidadePecas;
         return salarioBase + bonusProdutividade;
+    }
+
+    @Override
+    public void imprimirDetalhes() {
+        System.out.println("Nome: " + this.getNomeCompleto());
+        System.out.println("Matrícula: " + this.getNumeroRegistro());
+        System.out.println("Salário Base: " + this.calcularSalario());
+        System.out.println("Bônus Produtividade: " + this.getBonusProdutividade());
     }
 
     public ColaboradorProducao(String nome, String registro, double pecas, double valor) {
@@ -53,7 +89,4 @@ class ColaboradorProducao extends Colaborador {
         this.valorPeca = valor;
     }
 
-    public double getBonusProdutividade() {
-        return bonusProdutividade;
-    }
 }
