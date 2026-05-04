@@ -24,7 +24,7 @@ public class App {
 
                     Colaborador newColaborador = new Colaborador(nomeColaboradorPadrao, registroColaboradorPadrao);
                     colaboradores.add(newColaborador);
-                    System.out.println("Colaborador " + newColaborador.nomeCompleto + " adicionado.");
+                    System.out.println("Colaborador " + newColaborador.getNomeCompleto() + " adicionado.");
 
                     System.out.println("\n[Pressione ENTER para voltar ao menu]");
                     sc.nextLine(); // opção de melhoria para UX
@@ -51,7 +51,7 @@ public class App {
                             comissaoColaboradorComissionado);
 
                     colaboradores.add(newColaboradorComissionado);
-                    System.out.println("Colaborador " + newColaboradorComissionado.nomeCompleto + " adicionado.");
+                    System.out.println("Colaborador " + newColaboradorComissionado.getNomeCompleto() + " adicionado.");
 
                     System.out.println("\n[Pressione ENTER para voltar ao menu]");
                     sc.nextLine();
@@ -78,37 +78,17 @@ public class App {
                             valorPeca);
 
                     colaboradores.add(newColaboradorProducao);
-                    System.out.println("Colaborador " + newColaboradorProducao.nomeCompleto + " adicionado.");
+                    System.out.println("Colaborador " + newColaboradorProducao.getNomeCompleto() + " adicionado.");
 
                     System.out.println("\n[Pressione ENTER para voltar ao menu]");
                     sc.nextLine();
                     break;
                 case 4:
                     System.out.println("Gerar folha de pagamento");
-                    System.out.println("Total de funcionários: " + colaboradores.size());
-
-                    colaboradores.forEach(item -> {
-                        System.out.println("Nome: " + item.nomeCompleto);
-                        System.out.println("Matrícula: " + item.numeroRegistro);
-                        System.out.println("Salário Base: " + item.salarioBase);
-                        if (item instanceof ColaboradorComissionado) {
-                            ColaboradorComissionado c = (ColaboradorComissionado) item; // como o compilador espera uma
-                                                                                        // lista de itens do tipo
-                                                                                        // Colaborador, é preciso criar
-                                                                                        // uma nova variável do tipo
-                                                                                        // adequado, mas que contenha os
-                                                                                        // mesmos dados da variável
-                                                                                        // original
-                            System.out.println("Valor Comissão: " + c.getValorComissao());
-                        } else if (item instanceof ColaboradorProducao) {
-                            ColaboradorProducao p = (ColaboradorProducao) item;
-                            System.out.println("Bônus Produtividade: " + p.bonusProdutividade);
-                        }
+                    for (Colaborador item : colaboradores) {
+                        item.imprimirDetalhes();
                         System.out.println("Salário Total: " + item.calcularSalario());
-                    });
-
-                    System.out.println("\n[Pressione ENTER para voltar ao menu]");
-                    sc.nextLine();
+                    }
                     break;
                 case 0:
                     System.out.println("Até mais!");
