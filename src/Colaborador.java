@@ -19,7 +19,7 @@ public class Colaborador {
     public void imprimirDetalhes() {
         System.out.println("Nome: " + nomeCompleto);
         System.out.println("Matrícula: " + numeroRegistro);
-        System.out.println("Salário Base: " + salarioBase);
+        System.out.printf("Salário Base: R$ %.2f\n", salarioBase);
     }
 
     public Colaborador(String nome, String registro) { // construtor
@@ -47,7 +47,7 @@ class ColaboradorComissionado extends Colaborador {
     public void imprimirDetalhes() {
         System.out.println("Nome: " + this.getNomeCompleto());
         System.out.println("Matrícula: " + this.getNumeroRegistro());
-        System.out.println("Salário Base: " + this.calcularSalario());
+        System.out.printf("Salário Base: R$ %.2f\n", this.calcularSalario());
         System.out.println("Valor Comissão: " + this.getValorComissao());
     }
 
@@ -79,7 +79,7 @@ class ColaboradorProducao extends Colaborador {
     public void imprimirDetalhes() {
         System.out.println("Nome: " + this.getNomeCompleto());
         System.out.println("Matrícula: " + this.getNumeroRegistro());
-        System.out.println("Salário Base: " + this.calcularSalario());
+        System.out.printf("Salário Base: R$ %.2f\n", this.calcularSalario());
         System.out.println("Bônus Produtividade: " + this.getBonusProdutividade());
     }
 
